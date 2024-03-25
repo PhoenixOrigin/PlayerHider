@@ -1,6 +1,6 @@
 # PlayerHider
 
-> Ever hated someone so much you just want to remove them in every way possible? Then this is the mod for you
+> Ever hated someone so much you just want to remove them in every way possible?
 
 This mod removes players from the game, in every way possible. This includes:
 - Rendering
