@@ -24,6 +24,8 @@ public class PlayerHiderCommand {
                                 .executes(this::remove)))
                 .then(literal("list")
                         .executes(this::list))
+                .then(literal("clear")
+                        .executes(this::clear))
                 .executes(this::help);
         LiteralCommandNode<FabricClientCommandSource> node = dispatcher.register(source);
         dispatcher.register(literal("ph").redirect(node));
@@ -37,6 +39,13 @@ public class PlayerHiderCommand {
         return 0;
     }
 
+    private int clear(CommandContext<FabricClientCommandSource> context) {
+        for(String player : PlayerHider.username) {
+            PlayerHider.removeBlockedPlayer(player);
+        }
+        return 0;
+    }
+
     private int remove(CommandContext<FabricClientCommandSource> context) {
         if (context.getArgument("player", String.class) != null) {
             PlayerHider.removeBlockedPlayer(context.getArgument("player", String.class));
@@ -46,11 +55,7 @@ public class PlayerHiderCommand {
     }
 
     private int list(CommandContext<FabricClientCommandSource> context) {
-        context.getSource().sendFeedback(Text.of("Blocked Players: "));
-        for (String player : PlayerHider.username) {
-            assert MinecraftClient.getInstance().player != null;
-            MinecraftClient.getInstance().player.sendMessage(Text.of(String.format("Player: %s", player)));
-        }
+        context.getSource().sendFeedback(Text.of("Blocked Players: \n" + PlayerHider.username.stream().collect(StringBuilder::new, (sb, s) -> sb.append(s).append("\n"), StringBuilder::append)));
         return 0;
     }
 

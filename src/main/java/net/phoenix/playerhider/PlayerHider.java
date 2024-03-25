@@ -3,6 +3,9 @@ package net.phoenix.playerhider;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.network.packet.s2c.play.ScoreboardPlayerUpdateS2CPacket;
+import net.minecraft.scoreboard.Scoreboard;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,13 +26,13 @@ public class PlayerHider implements ClientModInitializer {
         return false;
     }
 
-    public static String cleanString(String string) {
+    public static String getBlockedPlayer(String string) {
         for (String player : username) {
             if (string.contains(player)) {
-                string = string.replaceAll(player, "Player");
+                return player;
             }
         }
-        return string;
+        return null;
     }
 
     public static void addBlockedPlayer(String player) {
@@ -48,6 +51,7 @@ public class PlayerHider implements ClientModInitializer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        InGameHud
     }
 
     private static void saveBlockedPlayers() throws IOException {

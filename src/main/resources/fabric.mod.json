@@ -2,25 +2,28 @@
   "schemaVersion": 1,
   "id": "playerhider",
   "version": "${version}",
-
   "name": "Player Hider",
   "description": "",
-  "authors": [],
-  "contact": {},
-
+  "authors": [
+    "PhoenixOrigin"
+  ],
+  "contact": {
+    "repo": "https://github.com/PhoenixOrigin/PlayerHider"
+  },
   "license": "All-Rights-Reserved",
   "icon": "assets/playerhider/icon.png",
-
   "environment": "client",
-  "entrypoints": {},
-
-      "mixins": [
-        "playerhider.mixins.json"
-      ],
-
+  "entrypoints": {
+    "client": [
+      "net.phoenix.playerhider.PlayerHider"
+    ]
+  },
+  "mixins": [
+    "playerhider.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-        "fabric": "*",
+    "fabric": "*",
     "minecraft": "${minecraft_version}"
   }
 }
