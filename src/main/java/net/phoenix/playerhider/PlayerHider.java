@@ -51,7 +51,6 @@ public class PlayerHider implements ClientModInitializer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        InGameHud
     }
 
     private static void saveBlockedPlayers() throws IOException {
