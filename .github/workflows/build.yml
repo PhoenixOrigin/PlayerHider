@@ -20,7 +20,6 @@ jobs:
         with:
           gradle-version: release-candidate
           arguments: build
-      - run: ls ./build/libs
 
       - name: Create Release
         uses: marvinpinto/action-automatic-releases@latest
