@@ -30,4 +30,4 @@ jobs:
           prerelease: false
           title: Build
           files: |
-            ./build/libs/PlayerHider-1.0.jar
+            ./build/libs/*-*.jar
