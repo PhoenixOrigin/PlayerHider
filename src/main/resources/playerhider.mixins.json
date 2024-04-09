@@ -8,7 +8,6 @@
   ],
   "client": [
     "ChatMixin",
-    "InGameHudMixin",
     "ItemStackMixin",
     "PlayerEntityRendererMixin",
     "PlayerListHudMixin"
