@@ -15,28 +15,11 @@ import java.util.Set;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public class PlayerListHudMixin {
-    /*
-    @Inject(method = "collectPlayerEntries", at = @At("HEAD"), cancellable = true)
-    private void collectPlayerEntries(CallbackInfoReturnable<List<PlayerListEntry>> cir) {
-        List<PlayerListEntry> entries = cir.getReturnValue();
-        System.out.println(entries);
-        for (PlayerListEntry entry : entries) {
-            if (PlayerHider.blockedPlayerChecked(entry.getDisplayName().getString())) {
-                entries.remove(entry);
-            }
-        }
-        cir.setReturnValue(entries);
-    }
-
-     */
-
     @Shadow @Final private Set<PlayerListEntry> listedPlayerListEntries;
-
-    @Inject(method = "handlePlayerListAction", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "handlePlayerListAction", at = @At("RETURN"))
     private void getListedPlayerListEntries(PlayerListS2CPacket.Action action, PlayerListS2CPacket.Entry receivedEntry, PlayerListEntry currentEntry, CallbackInfo ci) {
         if(PlayerHider.blockedPlayerChecked(receivedEntry.displayName().getString())) {
             listedPlayerListEntries.remove(currentEntry);
-            ci.cancel();
         }
     }
 

@@ -3,11 +3,12 @@ package net.phoenix.playerhider;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.network.packet.s2c.play.ScoreboardPlayerUpdateS2CPacket;
-import net.minecraft.scoreboard.Scoreboard;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
